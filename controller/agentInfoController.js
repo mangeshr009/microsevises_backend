@@ -3,8 +3,8 @@ const agent=require("../model/agentInfoModel")
 
 const createAgent = async(req,res)=>{
    try {
-    let {agentName,Mobile,Password,Collection,TotalDays,UserId,Commision,AgentId}=req.body;
-    let result = await agent.create({agentName,Mobile,Password,Collection,TotalDays,UserId,Commision,AgentId})
+    let {agentName,Mobile,Password,Collection,TotalDays,UserId,Commision,agentID,}=req.body;
+    let result = await agent.create({agentName,Mobile,Password,Collection,TotalDays,UserId,Commision,agentID})
     res.status(200)
     res.json({
         massage:"data create succsessfully",
@@ -27,7 +27,20 @@ const getAllagentinfo= async(req,res)=>{
         
     }
 }
-
+const deleteAgentId= async(req,res)=>{
+    try {
+        let id = req.params.id;
+        let result = await agent.findByIdAndDelete(id)
+        res.status(200)
+        res.json({
+            meassage:"agent ID succsessfully delete"
+        })
+        
+    } catch (error) {
+        console.log(error);
+        
+    }
+}
 const getagentbyId= async(req,res)=>{
     try {
         let id =req.params.id;
@@ -42,9 +55,11 @@ const getagentbyId= async(req,res)=>{
 }
 
 
+
 module.exports={
     createAgent,
     getAllagentinfo,
-    getagentbyId
+    getagentbyId,
+    deleteAgentId
     
 }

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema, model, Types } = mongoose;
 
-const agentSchema = Schema({
+const agentListSchema = Schema({
     agentName: {
         type: String
     },
@@ -25,9 +25,11 @@ const agentSchema = Schema({
     },
     agentID: {
         type: String
+    },
+    agentStatus:{
+        type:Boolean
     }
-    
     
 });
 
-module.exports = model('agent', agentSchema);
+module.exports = model('agentList', agentListSchema);

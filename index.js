@@ -5,7 +5,7 @@ env.config({path:"./config/.env"})
 
 
 const db = require("./config/db")
-const router = require('./routes/userRoute')
+const router = require('./routes/Route')
 
 db()
 
